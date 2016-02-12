@@ -1,0 +1,42 @@
+.reveal table {
+  border-collapse: collapse;
+}
+.reveal table td,.reveal table th {
+  border: 2px solid white;
+  vertical-align: middle;
+  text-align: center;
+  padding: 0.2em;
+}
+.reveal table tr:first-child th {
+  border-top: 0;
+}
+.reveal table tr:last-child td {
+  border-bottom: 0;
+}
+.reveal table tr td:first-child,
+.reveal table tr th:first-child {
+  border-left: 0;
+}
+.reveal table tr td:last-child,
+.reveal table tr th:last-child {
+  border-right: 0;
+}
+
+.reveal pre {
+    font-size: 0.7em;
+}
+.reveal code {
+  font-size: 0.8em;
+  background-color: rgba(35,38,40,0.2);
+  padding: 0.1em 0.2em;
+}
+
+.reveal pre code {
+  background-color: rgba(35,38,40,0.5);
+}
+
+.reveal section img {
+  background:none;
+  border:none;
+  box-shadow:none;
+  }
