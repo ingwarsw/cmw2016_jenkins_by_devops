@@ -1,6 +1,6 @@
 # Wprowadzenie do technologii Puppet
 
-Slajdy: http://www.stacja.it/PUPPET
+Slajdy: http://cardil.github.io/puppet-tut
 
 1. Czym jest DevOps i gdzie w tym Puppet?
 1. Sposoby pracy z Puppet
