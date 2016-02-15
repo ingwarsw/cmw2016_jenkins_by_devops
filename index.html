@@ -582,15 +582,14 @@ $ _</code></pre>
         <section>
           <h1>Czytelność Puppet</h1>
           <pre><code>package { 'postgresql':
-      ensure => 'installed',
-      }
+  ensure => 'installed',
+}
 
-      service { 'postgresql':
-      ensure  => 'running',
-      enable  => true,
-      require => Package['postgresql'],
-      }
-      </code></pre>
+service { 'postgresql':
+  ensure  => 'running',
+  enable  => true,
+  require => Package['postgresql'],
+}</code></pre>
           <p class="fragment">Co to znaczy? Na pierwszy rzut oka?</p>
         </section>
 
