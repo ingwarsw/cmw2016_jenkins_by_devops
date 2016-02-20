@@ -57,7 +57,7 @@
             <p>Karol Lassak</p>
             <ul>
               <li class="fragment">Technical Lead/DevOps</li>
-              <li class="fragment">Starszy Programista w Allegro<br />
+              <li class="fragment">Aktualnie Programista w Allegro
                   <div style="background: white; padding: 30px 20px 20px 40px; margin-top: 20px;" widt="203px">
                     <img  src="img/pres/logo-allegro-tech.svg" />
                   </div>
@@ -66,40 +66,35 @@
           </div>
         </section>
 
-        <section>
-          <ul>
-            <li>Programista od 10 lat</li>
-            <li>Od początku projekty z administratorami i dla nich</li>
-            <li class="fragment">Duże wdrożenia z DevOps / Puppet</li>
-            <li class="fragment">Wiele OS modułów: JBoss, Glassfish, XtreemFS, Artifactory, Flyway, Herald<br/>
-            <span style="display: inline-block; background: white; padding: 1em;">
-              <img height="100" src="img/logos/puppet.png"/>
-              <img height="100" src="img/pres/jboss.png"/>
-              <img height="100" src="img/pres/ruby-logo.png"/>
-              <img height="100" src="img/pres/java-logo.png"/>
-              <img height="100" src="img/logos/vagrant.png"/>
-              <img height="100" src="img/logos/docker.png"/>
-            </span>
-            </li>
+            <section>
+              <ul>
+                <li>Programista od 10 lat</li>
+                <li>Od początku projekty z administratorami i dla nich</li>
+                <li class="fragment">Duże wdrożenia z DevOps / Puppet</li>
 
-          </ul>
+                <span class="fragment" style="display: inline-block; background: white; padding: 1em;">
+                  <img height="100" src="img/logos/puppet.png"/>
+                  <img height="100" src="img/pres/jboss.png"/>
+                  <img height="100" src="img/pres/ruby-logo.png"/>
+                  <img height="100" src="img/pres/java-logo.png"/>
+                  <img height="100" src="img/logos/vagrant.png"/>
+                  <img height="100" src="img/logos/docker.png"/>
+                </span>
 
-        </section>
+              </ul>
+            </section>
       </section>
 
       <section>
         <section>
           <h2>Jak będzie wyglądał warsztat?</h2>
 
-          <ul>
-            <li>~9 tematów: <ul>
-              <li>Wstęp teoretyczny</li>
-              <li>Samodzielna praca</li>
-              <li>Przerwa</li>
-            </ul></li>
-            <li>Mikro projekt</li>
-            <li>Przerwa koło 13</li>
-          </ul>
+            <ul>
+                <li class="fragment">Krótki wstęp teoretyczny</li>
+                <li class="fragment">Samodzielna praca</li>
+                <li class="fragment">Przerwa koło 13</li>
+                <li class="fragment">Mikro projekt</li>
+            </ul>
 
         </section>
 
@@ -675,11 +670,11 @@ service { 'postgresql':
         <section data-background-color="#A61C00">
           <h1>Zadanie 4</h1>
           <ol>
-            <li>Używając Vagranta utworzyć snapshot przy użyciu sahara i zainstalować puppet z rubygems</li>
+            <li>Używając Vagranta zainstalować puppet z rubygems</li>
             <li>Uruchomić <code>puppet apply manifest.pp</code>, dwukrotnie, sprawdzając efekt<pre><code class="puppet">package { 'nginx':
   ensure => 'installed',
 }</code></pre></li>
-            <li>Przywrócić snapshot przy użyciu sahara i zainstalować puppet z repozytoriów puppetlabs</li>
+            <li>Zniszczyć maszyne i na nowej zainstalować puppet z repozytoriów puppetlabs</li>
             <li>Redo #2 (użyj też trybu <code>--noop</code> oraz <code>--debug</code>)</li>
           </ol>
         </section>
@@ -1045,8 +1040,7 @@ file { '/etc/passwd':
         <section data-background-color="#A61C00">
           <h1>Zadanie 9</h1>
           <ul>
-            <li>Napisz manifest instalujący i uruchamiający usługę apache</li>
-            <li>Powinna ona zawierać warunkową obsługę dla rodzin systemów Debian i Red Hat</li>
+            <li>Do obsługi usługi z zadania 8 dodaj warunkową obsługę dla rodzin systemów Debian i Red Hat</li>
             <li>Sprawdź manifest przy użyciu: <code>puppet parser validate plik.pp</code></li>
             <li>Uruchom przy użyciu Vagrant</li>
             <li>Pamiętaj o ustawieniu kolejności</li>
