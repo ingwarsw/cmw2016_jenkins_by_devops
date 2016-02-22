@@ -1,9 +1,7 @@
 package {'git': }
 package {'maven': }
 
-
-class { 'jenkins':
-}
+include jenkins
 
 jenkins::plugin { 'icon-shim': }
 jenkins::plugin { 'scm-api': }
