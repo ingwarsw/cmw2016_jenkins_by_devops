@@ -53,7 +53,7 @@
         <section>
           <img style="float: right; margin: 20" height="250" src="img/ingwar.jpg">
           <div style="text-align: left;">
-            <h1 class="blue">Kto ja!</h1>
+            <h1 class="blue">Heya!</h1>
             <p>Karol Lassak</p>
             <ul>
               <li class="fragment">Technical Lead/DevOps</li>
@@ -102,467 +102,71 @@
           <h2>Co przed nami?</h2>
           <ol>
             <li class="fragment">Co to jest Jenkins i gdzie w tym Puppet?</li>
-            <li class="fragment">Puppet przypomnienie podstaw</li>
-            <li class="fragment">Podstawowe typy takie jak file, service, user czy package</li>
-            <li class="fragment">Składnia deklaratywnych manifestów</li>
-            <li class="fragment">Zasoby i zarządzanie kolejnością</li>
-            <li class="fragment">Klasy i definicje</li>
-            <li class="fragment">Wstęp do testowania i tryb bez operacyjny</li>
-            <li class="fragment">Kompilacja, katalogi oraz raportowanie</li>
+            <li class="fragment">Puppet przypomnienie podstaw
+              <ul>
+              <li>Składnia deklaratywnych manifestów</li>
+              <li>Zasoby i zarządzanie kolejnością</li>
+              <li>Klasy i definicje</li>
+              </ul>
+            </li>
+            <li class="fragment">Moduły Puppet</li>
+              <li class="fragment">Puppet Forge</li>
+            <li class="fragment">Tworzenie modulu Jenkins</li>
           </ol>
         </section>
-      </section>
 
-      <section data-background-color="#5A983F">
-        <h1>Dyskusja</h1>
-        <ul>
-          <li>Jakie cele mam na tym warsztacie?</li>
-          <li>Czy potrafię wskazać na czym najbardziej mi zależy?</li>
-          <li>Czy mam już plan jak wykorzystać zdobytą tu wiedzę?</li>
-        </ul>
-      </section>
+          <section data-background-color="#A61C00">
+              <h1>Zadanie</h1>
+              <p>Przygotować maszyne virtualną do ćwiczeń</p>
+              <ul>
+                  <li>Vagrant</li>
+                  <li>VirtualBox</li>
+                  <li>Box<pre>vagrant box add puppetlabs/ubuntu-14.04-64-nocm</pre></li>
+              </ul>
 
-      <section>
+          </section>
 
-        <section>
-          <h1>Przyjrzyjmy się problemom w IT</h1>
-          <h2 class="blue">pomiędzy rozwojem aplikacji a utrzymaniem</h2>
-        </section>
-
-        <section>
-          <h1>Zmiana</h1>
-          <h6>Zmiana to jedyna <span class="blue">pewna</span> rzecz w każdej firmie</h6>
-          <h6 class="fragment">Powinna być <span class="blue">wykorzystana</span> i sprawnie <span class="blue">wprowadzona</span></h6>
-        </section>
-        <section>
-          <h1>Zmiana</h1>
-          <h6>Nie powinna prowadzić do strachu w żadnym z działów w firmie</h6>
-          <h6 class="fragment">Nie powinna oznaczać zwiększonego stresu</h6>
-          <h6 class="fragment">Nie powinna oznaczać konieczności "gaszenia pożarów"</h6>
-        </section>
-        <section>
-          <h2>Dalsze wyzwania</h2>
-
-          <ul>
-              <li class="fragment">Niska komunikacja = konflikty i niska efektywność</li>
-              <li class="fragment">Programiści nie wdrażają spójnego software'u</li>
-              <li class="fragment">Administratorzy mają tendencję do opierania się zmianom</li>
-              <li class="fragment">Proces wytwarzania jest najczęściej zwinny</li>
-              <li class="fragment">Proces utrzymania jest najczęściej statyczny</li>
-              <li class="fragment">Coraz potężniejsze, rozproszone rozwiązania</li>
-          </ul>
-        </section>
-      </section>
-
-      <section>
-        <h2>Devs vs Ops</h2>
-
-        <table>
-            <tr>
-              <th>&nbsp;</th>
-              <th>Developerzy</th>
-              <th>Administratorzy</th>
-            </tr>
-            <tr>
-              <td>Zainteresowanie</td>
-              <td>Szybkie zmiany</td>
-              <td>Stabilność środowiska</td>
-            </tr>
-            <tr>
-              <td>Skala</td>
-              <td><img
-                  width="250"
-                  style="background-color: #fff;"
-                  src="img/developer.png"
-                  alt="Developer view" /></td>
-              <td><img
-                  width="300"
-                  src="img/large-network-diagram.jpg"
-                  alt="Admin view" /></td>
-            </tr>
-            <tr>
-              <td>Cytaty</td>
-              <td><q>&quot; It works on my machine&quot;</q></td>
-              <td><q>&quot; It's not server, it's your code&quot;</q></td>
-            </tr>
-        </table>
-      </section>
-
-      <section data-background-color="#376422">
-        <section>
-          <h2>Rozwiązanie?</h2>
-          <h1>DevOps</h1>
-        </section>
-        <section>
-          <h1>Definicja</h1>
-          <blockquote>&quot;DevOps to praktyka codziennej współpracy i współtworzenia zespołów administracyjnych z zespołami programistów&quot;</blockquote>
-        </section>
-        <section>
-          <h2>Założenia DevOps</h2>
-          <ul>
-            <li>DevOps stosujemy w trakcie trwania całego cyklu życia danej usługi lub dłużej</li>
-            <li class="fragment">Od momentu jej projektowania, przez wykonanie, wdrożenie i utrzymanie</li>
-            <li class="fragment">Poprzez stosowanie wspólnych narzędzi i praktyk</li>
-            <li class="fragment">Automatyzację pracy i mikro wdrożenia</li>
-          </ul>
-        </section>
-      </section>
-
-      <section>
-        <h2>DevOps w punktach</h2>
-
-        <ol>
-            <li>Infrastucture as a Code</li>
-            <li class="fragment">Continuous build</li>
-            <li class="fragment">Continuous testing</li>
-            <li class="fragment">Continuous inspection</li>
-            <li class="fragment">Continuous integration</li>
-            <li class="fragment">Continuous delivery</li>
-            <li class="fragment">Continuous configuration enforcement</li>
-            <li class="fragment">Continuous deployment</li>
-            <li class="fragment">Continuous monitoring</li>
-            <li class="fragment">Continuous recovery</li>
-            <li class="fragment">Continuous scaling</li>
-        </ol>
-
-      </section>
-
-      <section data-background-color="#A61C00">
-        <h1>Zadanie 1</h1>
-
-        <p>Dla każdego z podpunktu wymienić kilka narzędzi bądź rozwiązań</p>
-        <p>Proszę użyć internetu i własnych doświadczeń :-)</p>
-      </section>
-
-      <section>
-        <section>
-          <h1 class="blue">Kilka uwag!</h1>
-          <h2>Czym DevOps nie jest?!</h2>
-        </section>
-
-        <section>
-          <h1>To nie jest No-Ops</h1>
-          <ul>
-            <li><cite>&quot;oni zabiorą nam nasze posady&quot;</cite></li>
-            <li class="fragment">współdzielenie odpowiedzialności a nie pozbycia się jej</li>
-            <li class="fragment">współpraca a nie odebranie jej</li>
-            <li class="fragment">uwolnienie ukrytych mocy</li>
-          </ul>
-        </section>
-
-        <section>
-          <h1>Nie chodzi (tylko) o narzędzia</h1>
-          <ul>
-            <li>przekonanie, że w DevOps chodzi głownie o zastosowanie nowych narzędzi w pracy,
-takich jak Puppet czy Chef</li>
-            <li class="fragment">praktyka wspólnej pracy</li>
-            <li class="fragment">wytworzenie kultury i nawyków spójnych z Agile</li>
-          </ul>
-        </section>
-
-        <section>
-          <h1>Nie chodzi (tylko) o kulturę</h1>
-          <ul>
-            <li class="fragment">potrzebne są narzędzia spełniające wymagania obu stron</li>
-            <li class="fragment">narzędzia te muszą wspierać nawyki wspólnej pracy</li>
-            <li class="fragment">obie strony muszą czerpać korzyści</li>
-          </ul>
-        </section>
-        <section>
-          <h1>Nie chodzi (tylko) o połączenie Dev i Ops</h1>
-          <ul>
-            <li class="fragment">obejmuje również: administratorach sieci</li>
-            <li class="fragment">specjalistów bezpieczeństwa</li>
-            <li class="fragment">architektów systemów</li>
-            <li class="fragment">analityków</li>
-          </ul>
-        </section>
-        <section>
-          <h1>Nie chodzi (tylko) o tytuł posady</h1>
-          <ul>
-            <li class="fragment">bez faktycznej zmiany sposobu pracy nie będzie dużych sukcesów</li>
-            <li class="fragment">zmiana musi być po obu stronach</li>
-          </ul>
-        </section>
-        <section>
-          <h1>Nie chodzi o wszystko, wszędzie</h1>
-          <ul>
-            <li class="fragment">po złym wprowadzeniu, upraszcza się DevOps do rozwodnionego Agile</li>
-            <li class="fragment">lub "miłości" do wszystkich</li>
-          </ul>
-        </section>
-      </section>
-
-      <section data-background-color="#17CCDD">
-        <h2>Proces DevOps</h2>
-        <img src="img/DevOps-infinity-loop2.png" />
-        <p>Krótkie szybkie iteracje</p>
-      </section>
-
-      <section>
-        <h2>Zmiana w całej firmie</h2>
-        <img src="img/pres/devops-change.svg" />
-      </section>
-
-      <section data-background-color="#A61C00">
-        <h1>Zadanie 2</h1>
-        <h2>Dyskusja</h2>
-        <ul>
-          <li>Co myślisz o DevOps?</li>
-          <li>Czy potrafisz wskazać podobne problemy w swojej organizacji?</li>
-          <li>Czy DevOps różni się znacznie od innych podejść?</li>
-          <li>Na co należy uważać przy DevOps?</li>
-        </ul>
-      </section>
-
-      <section>
-        <section data-background-color="#1C4587">
-          <h1>Zapis infrastruktury jako kod</h1>
-        </section>
-
-        <section>
-          <h2>Configuration enforcement</h2>
-          <p>Zapis infrastruktury jako kod przetwarzany i wykonywalny jest <strong>KLUCZOWY</strong> dla DevOps</p>
-          <p class="fragment">Daje możliwość pracy w niedużych iteracjach.</p>
-
-          <blockquote class="fragment">“To co było zapisane w postaci kodu zadziałało, problem był w tych elementach,
-których jeszcze nie automatyzowaliśmy. Zróbmy to!”</blockquote>
-        </section>
+          <section data-background-color="#5A983F">
+              <h1>Dyskusja</h1>
+              <ul>
+                  <li>Jakie cele mam na tym warsztacie?</li>
+                  <li>Czy potrafię wskazać na czym najbardziej mi zależy?</li>
+                  <li>Czy mam już plan jak wykorzystać zdobytą tu wiedzę?</li>
+              </ul>
+          </section>
 
       </section>
 
       <section>
-        <section data-background-color="#1C4587">
-          <h1>Sposoby pracy z narzędziami configuration management</h1>
-        </section>
         <section>
-          <h2>Praca bezpośrednio na docelowej infrastrukturze</h2>
-          <ul>
-            <li>Nie polecam</li>
-            <li class="fragment">Niebezpieczne i jedno dostępne</li>
-            <li class="fragment">Szczątkowe możliwości testowania</li>
-            <li class="fragment">Możliwość używania środowisk</li>
-          </ul>
-          <p class="fragment">Najpopularniejsze i polecane przez Puppetlabs :-(</p>
-        </section>
-        <section>
-          <h2>Wykorzystanie narzędzi typu Vagrant</h2>
-          <ul>
-            <li>W miarę wygodne i proste</li>
-            <li class="fragment">Bezpieczne</li>
-            <li class="fragment">Możliwe dogłębne testowanie</li>
-            <li class="fragment">Możliwe wykorzystanie systemów CI</li>
-          </ul>
-          <p class="fragment">Tak będziemy pracować na tym warsztacie</p>
-        </section>
-        <section>
-          <h2>Wykorzystanie separacji modułów</h2>
-          <ul>
-            <li>Wymaga ekosystemu developerskiego Puppet</li>
-            <li class="fragment">Bezpieczne, wielodostępne i skalowalne</li>
-            <li class="fragment">Możliwe pełne testowanie i separacja na odpowiedzialności</li>
-            <li class="fragment">Konieczne wykorzystanie systemów CI i CD</li>
-            <li class="fragment">Wykorzystanie zaawansowanych testów rspec i beaker</li>
-          </ul>
-          <p class="fragment">Najlepszy sposób pracy lecz zaawansowany</p>
-        </section>
-      </section>
-
-      <section>
-        <section>
-          <img src="img/logos/vagrant.png" height="500" />
-        </section>
-        <section>
-          <h1>Vagrant</h1>
-          <p>Typowe narzędzie fazy rozwoju i wstępnego testowania rozwiązań. Pozwala na:</p>
-          <ul>
-            <li>szybkie zarządzanie obrazami maszyny wirtualnej</li>
-            <li class="fragment">zarządzanie połączeniami sieciowymi</li>
-            <li class="fragment">miejscem współdzielonym</li>
-            <li class="fragment">uruchamianiem na maszynie wirtualnej skryptów i narzędzi configuration management</li>
-          </ul>
-        </section>
-        <section>
-          <h2 class="blue">Kluczowe funkcje Vagranta</h2>
-          <ul style="font-size: 0.9em">
-            <li>dostarcza poleceń linii komend do sterowania maszyną lub maszynami wirtualnymi</li>
-            <li class="fragment">pozwala na zapis konfiguracji w pliku Vagrantfile</li>
-            <li class="fragment">posiada szereg wbudowanych providerów: VirtualBox, VMWare, Docker, Hyper-V</li>
-            <li class="fragment">posiada szereg wbudowanych provisionerów: Shell, Chef, Puppet, Ansible, Docker, Salt, CFEngine</li>
-            <li class="fragment">posiada system wtyczek i istnieje wiele publicznych wtyczek</li>
-            <li class="fragment">posiada prostą instalację w postaci pliku DEB, RPM, MSI lub DMG</li>
-            <li class="fragment">dostarcza automatycznej konfiguracji sieci oraz folderów współdzielonych</li>
-          </ul>
-        </section>
-        <section>
-          <h1 class="blue">Instalacja</h1>
-          <h2>Vagrant</h2>
-          <pre><code class="bash" style="font-size: 16px;"># All commands as root
-echo 'deb http://download.virtualbox.org/virtualbox/debian trusty contrib' >
-    /etc/apt/sources.list.d/virtualbox.list
-wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | apt-key add -
-apt-get update
-apt-get install virtualbox-5.0
-
-curl -kL https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.2_x86_64.deb -o vagrant_1.7.2_x86_64.deb
-dpkg -i vagrant_1.7.2_x86_64.deb</code></pre>
+          <h1>Jenkins</h1>
+            <img height="500" src="img/logos/jenkins.png"/>
         </section>
 
         <section>
-          <h2>Bazowe obrazy do Vagranta</h2>
-          <img src="img/atlas.png" />
-          <a href="https://atlas.hashicorp.com/boxes/search">https://atlas.hashicorp.com/boxes/search</a>
+            <h2>Jenkins</h2>
+            <ul>
+                <li>Jedno z najpopularniejszych, darmowych narzedzi <span class="blue">continuous integration</span></li>
+                <li class="fragment">Przy jego pomocy mozna zbudowac łatwo process <span class="blue">continuous deployment</span></li>
+                <li class="fragment">Łatwa instalacja: pakiety do wiekszosci dystrybucji lub <span class="blue">java -jar jenkins.war</span></li>
+                <li class="fragment">Łatwa konfiguracja poprzez web GUI</li>
+                <li class="fragment">Bardzo duża ilość <a href="https://wiki.jenkins-ci.org/display/JENKINS/Plugins">pluginów</a></li>
+            </ul>
         </section>
+          <section>
+              <h2>Jenkins + Puppet</h2>
+              <h4>Dlaczego tak?</h4>
+              <ul>
+                  <li class="fragment">Dostajemy konfiguracje zapisaną w <span class="blue">kodzie</span></li>
+                  <li class="fragment">Przy dużej iloci zadań zarzadzanie nimi poprzez GUI jest bardzo czasochłonne</li>
+                  <li class="fragment">Znika problem <span class="blue">state of art</span>, łatwo można odtworzyć środowisko</li>
+                  <li class="fragment">Pozbywamy się również problemu <span class="blue">pływającej konfiguracji</span></li>
+              </ul>
+          </section>
 
-        <section>
-          <h2>Nowe środowisko dla Vagranta</h2>
-        <pre><code class="ini" style="font-size: 18px;">$ vagrant init puppetlabs/ubuntu-14.04-64-nocm
-A `Vagrantfile` has been placed in this directory. You are now
-ready to `vagrant up` your first virtual environment! Please read
-the comments in the Vagrantfile as well as documentation on
-`vagrantup.com` for more information on using Vagrant.
-$ _</code></pre>
-        </section>
-
-        <section>
-          <h2>Przykładowy plik Vagrantfile</h2>
-          <pre><code class="ruby" style="font-size: 18px;"># -*- mode: ruby -*-
-# vi: set ft=ruby :
-
-# Vagrantfile API/syntax version. Don't touch unless you know what
-VAGRANTFILE_API_VERSION = "2"
-
-Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  # Every Vagrant virtual environment requires a box to build off o
-  config.vm.box = "puppetlabs/ubuntu-14.04-64-nocm"
-
-  # Enable provisioning with Puppet stand alone.  Puppet manifests
-  # are contained in a directory path relative to this Vagrantfile.
-  # You will need to create the manifests directory and a manifest
-  # the file default.pp in the manifests_path directory.
-  #
-  # config.vm.provision "puppet" do |puppet|
-  #   puppet.manifests_path = "manifests"
-  #   puppet.manifest_file  = "site.pp"
-  # end
-end</code></pre>
-        </section>
-
-        <section>
-          <h2>Konfiguracja sieci, procesora i pamięci</h2>
-          <pre><code class="ruby" style="font-size: 18px;">Vagrant.configure(2) do |config|
-  config.vm.network :private_network, ip: "192.168.50.4"
-  config.vm.provider :virtualbox do |v|
-    v.memory = 1024
-    v.cpus = 2
-  end
-end</code></pre>
-        </section>
-
-        <section>
-          <h2>Uruchomienie maszyn w środowisku</h2>
-          <pre><code class="ini" style="font-size: 16px;">$ vagrant up
-Bringing machine 'default' up with 'virtualbox' provider...
-==> default: Importing base box 'puppetlabs/ubuntu-14.04-64-nocm'.
-==> default: Matching MAC address for NAT networking...
-==> default: Checking if box 'puppetlabs/ubuntu-14.04-64-nocm' is
-==> default: Setting the name of the VM: tmp_default_1426727671461
-==> default: Clearing any previously set network interfaces...
-==> default: Preparing network interfaces based on configuration..
-    default: Adapter 1: nat
-==> default: Forwarding ports...
-    default: 22 => 2222 (adapter 1)
-==> default: Booting VM...
-==> default: Waiting for machine to boot. This may take a few minu
-    default: SSH address: 127.0.0.1:2222
-    default: SSH username: vagrant
-    default: SSH auth method: private key
-==> default: Machine booted and ready!
-==> default: Checking for guest additions in VM...
-==> default: Mounting shared folders...
-    default: /vagrant => /tmp
-$ _</code></pre>
-        </section>
-
-        <section>
-          <h2>Sesja SSH w środowisku</h2>
-          <pre><code class="ini" style="font-size: 16px;">$ vagrant ssh
-Welcome to Ubuntu 14.04 LTS (GNU/Linux 3.13.0-24-generic x86_64)
-
- * Documentation:  https://help.ubuntu.com/
-vagrant@localhost:~$ uptime
- 18:17:47 up 3 min,  1 user,  load average: 0.00, 0.00, 0.00
-vagrant@localhost:~$ logout
-Connection to 127.0.0.1 closed.
-$ _</code></pre>
-        </section>
-
-        <section>
-          <h2>Zweryfikowanie stanu maszyny</h2>
-          <p>Aby sprawdzić jaki jest aktualny stan maszyny w ramach konfiguracji, należy wywołać polecenie <code>vagrant status</code>.</p>
-        </section>
-
-        <section>
-          <h2>Usunięcie maszyny</h2>
-          <p>Aby skasować maszynę wykonać należy polecenie <code>vagrant destroy</code>.</p>
-        </section>
-
-        <section>
-          <h2>Zaopatrywanie w konfigurację</h2>
-          <pre><code class="ruby" style="font-size: 18px;">Vagrant.configure("2") do |config|
-  config.vm.box = "puppetlabs/ubuntu-14.04-64-puppet"
-  # Provision with Bash
-  config.vm.provision :shell, inline: "echo Hi $(cat /etc/issue)"
-  # Provision with Puppet apply
-  config.vm.provision :puppet do |puppet|
-    puppet.manifests_path = "manifests"
-    # contains: "package { 'elinks': ensure => 'installed', }"
-    puppet.manifest_file = "default.pp"
-  end
-end</code></pre>
-        </section>
-
-<section>
-          <h2>Wynik zaopatrywania w konfigurację</h2>
-          <pre><code class="ini" style="font-size: 18px;">$ vagrant provision
-==> default: Running provisioner: shell...
-    default: Running: inline script
-==> default: Hi Ubuntu 14.04.2 LTS \n \l
-==> default: Running provisioner: puppet...
-==> default: Running Puppet with default.pp...
-==> default: Notice: Compiled catalog for localhost.suszynski.org
- in environment production in 0.08 seconds
-==> default: Notice: /Stage[main]/Main/Package[elinks]/ensure:
- ensure changed 'purged' to 'present'
-==> default: Notice: Finished catalog run in 4.88 seconds
-$ _</code></pre>
-        </section>
-
-        <section>
-          <h1 class="blue">Wtyczki</h1>
-          <h2>do Vagranta</h2>
-          <p><a href="https://github.com/mitchellh/vagrant/wiki/Available-Vagrant-Plugins">github.com/mitchellh/vagrant/wiki/Available-Vagrant-Plugins</a></p>
-          <ul>
-            <li>landrush - Lokalnego micro DNS, który automatycznie przyznaje maszynom IP. Działa zarówno w maszynach wirtualnych jak i na hoście</li>
-            <li>sahara - Możliwość wykonywania migawek stanu, przywracania stanu i potwierdzania zmian</li>
-          </ul>
-        </section>
-
-      </section>
-
-      <section>
-        <h1>Vagrant</h1>
-        <h2 class="blue">Demo</h2>
-      </section>
-
-      <section data-background-color="#A61C00">
-        <h1>Zadanie 3</h1>
-        <ul>
-          <li>Zainstalować Vagranta</li>
-          <li>Przygotować maszynę z obrazu: <code>puppetlabs/ubuntu-14.04-64-nocm</code></li>
-          <li>Zainstalować podstawowe pakiety: git, htop, telnet, itp. i sprawdzić separację ze swoim systemem</li>
-          <li>Zatrzymać, usunąć, postawić na nowo, na koniec usunąć</li>
-        </ul>
+          <section data-background-color="#5A983F">
+              <h1>Demonstracja Jenkins</h1>
+          </section>
       </section>
 
       <section>
@@ -646,47 +250,10 @@ service { 'postgresql':
 
       </section>
 
-      <section>
-        <section>
-          <h1>Sposoby instalacji Puppet</h1>
-          <ul>
-            <li class="fragment">z pakietów dostępnych w systemie operacyjnym</li>
-            <li class="fragment">z rubygems</li>
-            <li class="fragment">z pakietów z repozytoriów puppetlabs</li>
-            <li class="fragment">instalator wersji Enterprise</li>
-          </ul>
-          <p>
-            <strong>Uwaga!</strong> Przed instalacją Puppet należy ustawić pełną nazwę domenową (FQDN) i poleca się zainstalowanie i uruchomienie usługi synchronizacji czasu ntp!
-          </p>
-        </section>
-
-        <section>
-          <h1 class="blue">Demo</h1>
-          <h2>Instalacja Puppet</h2>
-        </section>
-
-        <section data-background-color="#A61C00">
-          <h1>Zadanie 4</h1>
-          <ol>
-            <li>Używając Vagranta zainstalować puppet z rubygems</li>
-            <li>Uruchomić <code>puppet apply manifest.pp</code>, dwukrotnie, sprawdzając efekt<pre><code class="puppet">package { 'nginx':
-  ensure => 'installed',
-}</code></pre></li>
-            <li>Zniszczyć maszyne i na nowej zainstalować puppet z repozytoriów puppetlabs</li>
-            <li>Redo #2 (użyj też trybu <code>--noop</code> oraz <code>--debug</code>)</li>
-          </ol>
-        </section>
-
-        <section data-background="#5A983F">
-          <h1>Zadanie 5</h1>
-          <h2>Dyskusja</h2>
-          <ul>
-            <li>Czy praca z Vagrantem wydaje się prosta?</li>
-            <li>Jakie problemy mogą się pojawić? Na co uważać?</li>
-            <li>Jakie widzisz plusy i minusy?</li>
-          </ul>
-        </section>
-      </section>
+          <section data-background="#A61C00">
+              <h1>Zadanie 1</h1>
+              <p>Uruchomienie Vagranta z Puppetem</p>
+          </section>
 
       <section>
         <section data-background-color="#1C4587">
