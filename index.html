@@ -177,7 +177,12 @@
         </section>
 
         <section>
-          <h1>Czytelność Puppet</h1>
+          <h2>Proces wprowadzania zmiany</h2>
+          <img src="img/PL_dataflow_notitle.png" style="background-color: #fff; padding:1em">
+        </section>
+
+        <section>
+          <h1>Puppet DSL</h1>
           <pre><code>package { 'postgresql':
   ensure => 'installed',
 }
@@ -187,316 +192,18 @@ service { 'postgresql':
   enable  => true,
   require => Package['postgresql'],
 }</code></pre>
-          <p class="fragment">Co to znaczy? Na pierwszy rzut oka?</p>
+          <p>Nawet ludzie nie znający Puppeta są w stanie odgadnąć co może oznaczać taki zapis</p>
         </section>
 
-        <section>
-          <h2 class="blue">Zalety Puppet</h2>
-          <p>Dostarcza możliwości zapisania oczekiwanego stanu infrastruktury IT</p>
-          <p class="fragment">Wymuszenia wykonania zmian dostosowującego ją do tegoż stanu</p>
-          <p class="fragment">Wszystkie elementy składowe to open-source</p>
-          <p class="fragment">Prosty język manifestów naturalnie przyjazny administratorom</p>
-          <p class="fragment">Silnik Puppeta składa się z zestawu komend konsoli systemu, które również można efektywnie wykorzystywać w oderwaniu od Puppeta</p>
-        </section>
-
-        <section>
-          <h2 class="blue">Zalety Puppet - c.d.</h2>
-          <p>Język DSL w postaci deklaratywnej tzn. 4 generacji podobnie jak SQL</p>
-          <p class="fragment">Brak podejścia &quot;all or nothing&quot;, można go wprowadzać na dowolnym etapie zaawansowania projektu</p>
-          <p class="fragment">Największa społeczność użytkowników</p>
-          <p class="fragment">Możliwość prostego rozszerzenia silnika Puppeta w postaci zarówno manifestów Puppet jak i kodu niskopoziomowego Ruby</p>
-          <p class="fragment">Wytwarza naturalny podział pracy: programiści piszą kod w Ruby a administratorzy używają prostszych manifestów</p>
-        </section>
-
-        <section>
-          <h2 class="blue">Zalety Puppet - c.d. 2</h2>
-          <p>Największa ilość gotowych do użycia modułów i rozszerzeń</p>
-          <p class="fragment">Moduły pisane i utrzymywane przez firmę Puppetlabs</p>
-          <p class="fragment">Dogłębne testowanie jednostkowe, &quot;dymne&quot;, integracyjne i akceptacyjne</p>
-          <p class="fragment">Możliwość symulowania zmiany w systemie</p>
-          <p class="fragment">Dokładne, szczegółowe raportowanie</p>
-          <p class="fragment">Bezpieczna i skalowalna architektura agent --&gt; serwer</p>
-        </section>
-
-        <section>
-          <h2 class="blue">Zalety Puppet - c.d. 3</h2>
-          <p>Wsparcie i integracje z innymi narzędziami np. Vagrant, VMWare, OpenStack</p>
-          <p class="fragment">Wsparcie enterprise firmy Puppetlabs i Red Hat, oraz dodatkowe bardzo przydatne narzędzia takie jak Enterprise Console, Razer czy Cloud Provisioning</p>
-          <p class="fragment">Wsparcie dla największej liczby systemów operacyjnych: Linux (RHEL i podobne, Debian i podobne), Suse, AIX, Solaris, Windows, Mac OSX</p>
-          <p class="fragment">Największe wsparcie dla edytorów kodu, systemów weryfikacji i budowania oraz integracji ciągłej</p>
-        </section>
-      </section>
-
-      <section>
-        <section>
-          <h1 class="blue">Puppet</h1>
-          <h2>Jak działa?</h2>
-        </section>
-
-        <section>
-          <h1>Proces działania</h1>
-          <img src="img/PL_howpuppetworks_notitle.png" style="background-color: white; padding:1em;">
-        </section>
-
-        <section>
-          <h1>Klasyfikacja</h1>
-          <img src="img/PL_multiode_notitle1.png" style="background-color: #fff; padding:1em">
-        </section>
-
-        <section>
-          <h2>Proces wprowadzania zmiany</h2>
-          <img src="img/PL_dataflow_notitle.png" style="background-color: #fff; padding:1em">
-        </section>
-
-      </section>
-
-          <section data-background="#A61C00">
-              <h1>Zadanie 1</h1>
-              <p>Uruchomienie Vagranta z Puppetem</p>
-          </section>
-
-      <section>
-        <section data-background-color="#1C4587">
-          <h1>Opis ekosystemu Puppet</h1>
-          <p>Puppet składa się z kilku luźno powiązanych ze sobą narzędzi i systemów.</p>
-          <p class="fragment">Dzięki temu daje możliwość używania ich niezależnie</p>
-        </section>
-
-        <section>
-          <h1>Facter</h1>
-          <p>Narzędzie działające między innymi w konsoli systemowej. Jego zadaniem jest wyliczanie faktów na temat maszyny na której został uruchomiony.</p>
-        </section>
-
-        <section>
-          <h2>Facter - przykład</h2>
-          <pre><code class="ini">$ facter
-architecture => amd64
-ipaddress => 172.17.42.1
-kernel => Linux
-kernelmajversion => 3.11
-kernelrelease => 3.11.0-26-generic
-kernelversion => 3.11.0
-lsbdistcodename => saucy
-lsbdistdescription => Ubuntu 13.10
-lsbdistid => Ubuntu
-lsbdistrelease => 13.10
-lsbmajdistrelease => 13.10
-operatingsystem => Ubuntu
-operatingsystemmajrelease => 13.10
-operatingsystemrelease => 13.10
-osfamily => Debian
-puppetversion => 3.2.4
-rubyplatform => x86_64-linux
-rubyversion => 1.9.3
-timezone => CET
-uniqueid => 007f0100
-uptime => 1 day
-uptime_days => 1
-uptime_hours => 45
-uptime_seconds => 165504
-virtual => physical
-$ _
-          </code></pre>
-        </section>
-
-        <section data-background="#A61C00">
-          <h1>Zadanie 6</h1>
-          <ul>
-            <li>Uruchom polecenie: <code>facter ipaddress</code></li>
-            <li>Uruchom polecenie: <code>facter fqdn</code></li>
-            <li>Uruchom polecenie: <code>facter operatingsystem</code></li>
-            <li>Uruchom polecenie: <code>facter</code></li>
-            <li>Co zwracają te polecenia? Jak można to wykorzystać?</li>
-          </ul>
-        </section>
-
-        <section>
-          <h1>Augeas</h1>
-          <p>Narzędzie elastycznego zmieniania konfiguracji plików. Potrafi inteligentnie zmieniać treść bardzo wielu różnych formatów plików, selektywnie, zmieniając jedyne pożądaną wartość i nie zmieniając nic w przypadku pełnej zgodności.</p>
-        </section>
-
-        <section>
-          <h2>Augeas</h2>
-          <pre><code class="ini" style="font-size: 17px;">$ augtool
-augtool> get /files/etc/postgresql/9.1/main/postgresql.conf/max_connections
-/files/etc/postgresql/9.1/main/postgresql.conf/max_connections = 100
-augtool> set /files/etc/postgresql/9.1/main/postgresql.conf/max_connections 130
-augtool> get /files/etc/postgresql/9.1/main/postgresql.conf/max_connections
-/files/etc/postgresql/9.1/main/postgresql.conf/max_connections = 130
-augtool> save</code></pre>
-        </section>
-
-        <section>
-          <h1 class="blue">Demo</h1>
-          <h2>Augeas</h2>
-        </section>
-
-        <section>
-          <h1>Hiera</h1>
-          <p>Hierarchiczna, prosta baza danych dzięki której możliwe są kontekstowe konfiguracje.</p>
-        </section>
-
-        <section>
-          <h2>Hiera - graf</h2>
-          <pre style="font-size: 18px;"><code>
-
-     /------------- DC1 -------------\    /------------- DC2 -------------\
-    | ntpserver: ntp1.dc1.example.com |  | ntpserver: ntp1.dc2.example.com |
-    | sysadmin: dc1noc@example.com    |  |                                 |
-    | classes: users::dc1             |  | classes: users::dc2             |
-     \-------------------------------/    \-------------------------------/
-                              \             /
-                                \         /
-                         /------------- COMMON -------------\
-                        | ntpserver: 1.pool.ntp.org          |
-                        | sysadmin: sysadmin@%{domain}       |
-                        | classes: users::common             |
-                         \----------------------------------/
-          </code></pre>
-        </section>
-
-        <section>
-          <h1 class="blue">Demo</h1>
-          <h2>Hiera</h2>
-        </section>
-
-        <section>
-          <h1 class="blue">puppet resource</h1>
-          <p>Możliwość uruchamiania puppeta dla konkretnych pojedynczych zasobów i listowania ich</p>
-        </section>
-
-        <section>
-          <h2>puppet resource - przykład</h2>
-          <pre><code class="puppet"># puppet resource user ksuszynski
-user { 'ksuszynski':
-  ensure  => 'present',
-  comment => 'Krzysztof Suszynski,,,',
-  gid     => '1000',
-  groups  => ['adm', 'sudo', 'docker'],
-  home    => '/home/ksuszynski',
-  shell   => '/bin/bash',
-  uid     => '1000',
-}</code></pre>
-        </section>
-
-        <section>
-          <h1 class="blue">Demo</h1>
-          <h2>puppet resource</h2>
-        </section>
-
-        <section data-background="#A61C00">
-          <h1>Zadanie 7</h1>
-          <ul>
-            <li>Utwórz użytkownika: <code>useradd -s /bin/bash -b /home twoje-imie</code></li>
-            <li>Uruchom polecenie: <code>puppet resource user twoje-imie</code></li>
-            <li>Ustaw hasło: <code>passwd twoje-imie</code></li>
-            <li>Sprawdź, uruchamiając polecenie: <code>puppet resource user twoje-imie</code></li>
-            <li>Zmień shell przy użyciu: <code>puppet resource user twoje-imie shell=/bin/sh</code></li>
-            <li>Wykonaj i sprawdź wynik: <code>puppet resource user</code></li>
-            <li>Co zwracają te polecenia? Jak można to wykorzystać?</li>
-          </ul>
-        </section>
-      </section>
-
-      <section>
-        <section data-background-color="#1C4587">
-          <h1>Podstawa składni DSL Puppet</h1>
-        </section>
-        <section>
-          <h1 class="blue">Język Puppet</h1>
-          <p>Język Puppet zapisywany jest w manifestach</p>
-          <p class="fragment">Manifesty są grupowane w moduły</p>
-          <p class="fragment">Manifesty mogą zawierać definicje, klasy lub wywołania zasobów</p>
-        </section>
         <section>
           <h1 class="blue">Zasób Puppet</h1>
           <p>Zasobem jest każdy pojedynczy <strong class="blue">deklaratywny</strong> element, który puppet może wymusić</p>
           <pre><code class="puppet">service { 'apache2':
   ensure => 'running',
+  enable => true,
 }</code></pre>
           <p class="fragment">Puppet posiada wiele wbudowanych zasobów</p>
         </section>
-        <section>
-          <h2>Podstawowe zasoby</h2>
-          <ul>
-            <li class="fragment">file</li>
-            <li class="fragment">service</li>
-            <li class="fragment">package</li>
-            <li class="fragment">exec</li>
-            <li class="fragment">user</li>
-            <li class="fragment">group</li>
-            <li class="fragment">augeas</li>
-          </ul>
-        </section>
-        <section>
-          <h2>file</h2>
-          <p>
-            Potrafi zarządzać plikami, katalogami i linkami symbolicznymi. Dodatkowo kopiować pliki i katalogi.
-          </p>
-          <pre><code class="puppet">file { '/etc':
-  ensure => 'directory',
-  mode   => '0755',
-}
-file { '/etc/acme-motd':
-  ensure  => 'file',
-  content => 'Hello from Acme Datacenter managed by Puppet!',
-  mode    => '0644',
-}
-file { '/etc/motd':
-  ensure => 'link',
-  target => '/etc/acme-motd',
-}</code></pre>
-        </section>
-        <section>
-          <h2>package</h2>
-          <p>
-            Potrafi zarządzać pakietami przy użyciu YUM, APT, GEM, PIP i wielu innych.
-          </p>
-          <pre><code class="puppet">package { 'ruby':
-  ensure   => 'installed',
-}
-package { 'lolcat':
-  ensure   => 'installed',
-  provider => 'gem',
-}</code></pre>
-        </section>
-        <section>
-          <h2>service</h2>
-          <p>
-            Potrafi zarządzać usługami w systemie.
-          </p>
-          <pre><code class="puppet">service { 'apache':
-  ensure     => 'running',
-  enable     => true,
-  hasrestart => true,
-  hasstatus  => true,
-}</code></pre>
-        </section>
-        <section>
-          <h2>user</h2>
-          <p>
-            Zarządza użytkownikami w systemie
-          </p>
-          <pre><code class="puppet">user { 'ksuszynski':
-  ensure => 'present',
-  shell  => '/bin/bash',
-  groups => ['admin', 'user'],
-}</code></pre>
-        </section>
-        <section>
-          <h2>exec</h2>
-          <p>
-            Pozwala na uruchamianie poleceń w systemie
-          </p>
-          <pre><code class="puppet">exec { '/usr/bin/yes yes | bundle exec rake gitlab:setup':
-  unless      => '/usr/bin/test -f /opt/gitlab/.db_done',
-  timeout     => 600,
-  environment => ['RAILS_ENV=production'],
-}
-</code></pre>
-        </section>
-      </section>
-      <section>
 
         <section>
           <h1>Kolejność</h1>
@@ -526,175 +233,29 @@ service { 'ssh':
   subscribe => File['/etc/ssh/sshd_config.conf'],
 }</code></pre>
         </section>
+
+        <section data-background="#A61C00">
+            <h1>Zadanie 1</h1>
+            <ul>
+              <li>Uruchomienie VM przy użyciu Vagranta: <code>puppetlabs/ubuntu-14.04-64-nocm</code></li>
+              <li>Zainstalowanie Puppet <a href="https://gist.github.com/cardil/31409f02e87182fdd9ef">goo.gl/a2lGAR</a>: <pre><code class="bash">wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
+sudo dpkg -i puppetlabs-release-trusty.deb
+sudo apt-get update &amp;&amp; sudo apt-get install -y puppet</code></pre></li>
+            </ul>
+
+        </section>
+
         <section data-background-color="#A61C00">
-          <h1>Zadanie 8</h1>
+          <h1>Zadanie 2</h1>
           <ul>
-            <li>Napisz prosty manifest instalujący i uruchamiający jedną z usług: apache, nginx, postgres, mysql</li>
+            <li>Napisz prosty manifest instalujący pakiety: git, maven</li>
+            <li>Dodający użytkownika <code>jenkins</code></li>
+            <li>Oraz utworzyć katalog użytkownika i SSH <code>/home/jenkins</code>, <code>/home/jenkins/.ssh</code></li>
             <li>Sprawdz manifest przy użyciu: <code>puppet parser validate plik.pp</code></li>
             <li>Uruchom przy użyciu Vagrant</li>
-            <li>Wykorzystaj typy package, service, file i user</li>
-            <li>Pamiętaj o ustawieniu kolejności</li>
-            <li>Zatrzymaj usługę "ręcznie": <code>service ... stop</code> i uruchom Puppet ponownie</li>
-            <li>Wywołaj w trybie debug</li>
           </ul>
         </section>
-      </section>
 
-      <section>
-        <section>
-          <h2>Zmienne</h2>
-          <p>W języku DSL Puppet występuje możliwość tworzenia i wykorzystywania zmiennych</p>
-          <p>Wbrew nazwie, raz ustalonej zmiennej nie można zmienić</p>
-          <pre><code class="puppet">$service = 'apache2'
-service { $service:
-  ensure  => 'running',
-  require => Package[$service],
-}
-package { $service:
-  ensure => 'installed',
-}
-</code></pre>
-          <p>
-            Fakty są dostępne w przestrzeni globalnej np.: <code>$::fqdn</code>
-          </p>
-        </section>
-        <section>
-          <h2>Wyrażenia warunkowe</h2>
-          <p>W języku DSL Puppet występuje zestaw wyrażeń warunkowych</p>
-          <pre><code class="puppet">if $::osfamily == 'Debian' {
-  $service = 'apache2'
-} else {
-  $service = 'httpd'
-}</code></pre>
-        </section>
-        <section>
-          <h2>Warunki case</h2>
-          <pre><code class="puppet">case $::operatingsystem {
-  'RedHat', 'CentOS': { $service = 'httpd' }
-  /^(Debian|Ubuntu)$/:{ $service = 'apache2' }
-  default:            { fail("Unsupported platform: ${::operatingsystem}") }
-}</code></pre>
-        </section>
-        <section>
-          <h2>Selektory</h2>
-          <pre><code class="puppet">$rootgroup = $::osfamily ? {
-  'Solaris'          => 'wheel',
-  /(Darwin|FreeBSD)/ => 'wheel',
-  default            => 'root',
-}
-
-file { '/etc/passwd':
-  ensure => 'file',
-  owner  => 'root',
-  group  => $rootgroup,
-}</code></pre>
-        </section>
-
-        <section>
-          <h2>Funkcje</h2>
-          <pre><code class="puppet">if str2bool($::is_virtual) {
-  fail('unsupported')
-} else {
-  include ntp
-}</code></pre>
-<p>
-  W tym przykładzie funkcje to <code>fail</code>, <code>include</code> oraz <code>str2bool</code>.
-</p>
-        </section>
-
-        <section data-background-color="#A61C00">
-          <h1>Zadanie 9</h1>
-          <ul>
-            <li>Do obsługi usługi z zadania 8 dodaj warunkową obsługę dla rodzin systemów Debian i Red Hat</li>
-            <li>Sprawdź manifest przy użyciu: <code>puppet parser validate plik.pp</code></li>
-            <li>Uruchom przy użyciu Vagrant</li>
-            <li>Pamiętaj o ustawieniu kolejności</li>
-          </ul>
-        </section>
-      </section>
-
-      <section>
-        <section>
-          <h1 class="blue">Sposoby uruchamiania</h1>
-          <h4>resource</h4>
-          <h4 class="fragment">apply</h4>
-          <h4 class="fragment">agent</h4>
-        </section>
-
-        <section>
-          <h1>Tryb agent</h1>
-          <p class="fragment">Puppet łączy się do serwera i pobiera z niego konfigurację</p>
-          <p class="fragment">Dostęp tylko po SSL z zaufanym certyfikatem</p>
-          <p class="fragment">Kompilacja na serwerze, wykonanie na agencie</p>
-        </section>
-        <section>
-          <h1>Tryb agent</h1>
-          <h2 class="blue">demo</h2>
-        </section>
-
-        <section data-background-color="#A61C00">
-          <h1>Zadanie 10</h1>
-          <ul>
-            <li>Używając Vagranta uruchomić 2 maszyny master i agent</li>
-            <li>Zainstalować na obu puppet</li>
-            <li>Połączyć agenta do mastera</li>
-            <li>Ma masterze dodać kod i przydzielić go dla agenta</li>
-            <li>Uruchomić agenta</li>
-          </ul>
-        </section>
-      </section>
-
-      <section>
-        <section>
-          <h1>Wstęp do testowania</h1>
-        </section>
-        <section>
-          <h2>Sposoby testowania</h2>
-          <p>Puppet posiada szereg możliwości testowania</p>
-          <ul>
-            <li><code>puppet parser validate</code> i puppet-lint</li>
-            <li>smoke testy i tryb bezoperacyjny</li>
-            <li>rspec-puppet</li>
-            <li>beaker</li>
-          </ul>
-          <p>
-            Nie będziemu tu mówić o 2 ostatnich
-          </p>
-        </section>
-        <section>
-          <h2>Walidacja poprawności manifestów</h2>
-          <ul>
-            <li>IDE - polecam w szczególności na początku Geppetto, ale też Atom czy Intellij</li>
-            <li>puppet-lint</li>
-            <li>puppet parser validate</li>
-          </ul>
-        </section>
-        <section>
-          <h2>Tryb bezoperacyjny</h2>
-          <p>
-            Unikalna funkcjonalność puppet
-          </p>
-          <p>
-            Pozwala uruchamianie manifestów bez wprowadzania zmian
-          </p>
-          <p>
-            Flaga: <code>--noop</code>
-          </p>
-        </section>
-        <section>
-          <h2>Smoke testy Puppet</h2>
-          <p>W Puppet smoke testy to po prostu uruchamianie manifestów, specjalnie przygotowanych w katalogu <code>tests</code> w trybie bezoperacyjnym <code>--noop</code></p>
-          <pre><code>puppet apply tests/apache.pp --noop</code></pre>
-        </section>
-
-        <section data-background-color="#A61C00">
-          <h1>Zadanie 11</h1>
-          <ul>
-            <li>Wykorzystując kod z zadania 9 przetestować działanie trybu bezoperacyjnego</li>
-            <li>Przywrócić maszynę do stanu początkowego - sahara lub vagrant destroy</li>
-            <li>Uruchomić kod z flagą <code>--noop</code></li>
-          </ul>
-        </section>
       </section>
 
       <section>
@@ -746,6 +307,13 @@ file { '/etc/passwd':
           </ul>
           <p>
             Wiecej: <a href="http://slides.com/cardil/reusable-puppet-module-development-and-testing">http://slides.com/cardil/...</a>
+          </p>
+        </section>
+        <section>
+          <h1>Generowanie modułu</h1>
+          <p><code>puppet module generate company/modulename</code></p>
+          <p>
+            Generuje strukturę modułu
           </p>
         </section>
         <section>
@@ -813,68 +381,49 @@ define apache::vhost ($port, $docroot, $servername = $title, $vhost_name = '*') 
   }
 }</code></pre>
         </section>
+        <section>
+          <h1 class="blue">Pliki</h1>
+          <h2>w modułach</h2>
+          <pre><code class="puppet">file { '/home/jenkins/.ssh/id_rsa.pub':
+  ensure => 'file',
+  mode   => '0400',
+  # Plik w /etc/puppet/modules/myjenkins/files/id_rsa.pub
+  source => 'puppet:///modules/myjenkins/id_rsa.pub'
+}</code></pre>
+<p>
+  W modułach można umieścić pliki w katalogu: <code>files/</code>
+</p>
+        </section>
+        <section>
+          <h1 class="blue">Template</h1>
+          <h2>w modułach</h2>
+          <pre><code class="puppet">file { '/etc/default/jenkins':
+  ensure  => 'file',
+  mode    => '0644',
+  # Plik w /etc/puppet/modules/myjenkins/templates/etc-jenkins.erb
+  content => template('myjenkins/etc-jenkins.erb')
+}</code></pre>
+<p>
+  W modułach można umieścić template w katalogu: <code>templates/</code>
+</p>
+        </section>
+        <section>
+          <h2 class="blue">Template</h2>
+          <h2>przykład</h2>
+          <pre><code class="erb">## Jenkins settings file
+JENKINS_USER=<% @user %></code></pre>
+          <p>
+            Plik: <code>/etc/puppet/modules/myjenkins/templates/etc-jenkins.erb</code>
+          </p>
+        </section>
         <section data-background-color="#A61C00">
-          <h1>Zadanie 12</h1>
+          <h1>Zadanie 3</h1>
           <ul>
-            <li>Wykorzystując kod z zadania 11 utworzyć moduł puppet i przenieść kod do klas i definicji</li>
+            <li>Wykorzystując kod z zadania 2 utworzyć moduły puppet <code>inazwisko/myjenkins</code> oraz <code>inazwisko/common</code> i przenieść kod do klas i definicji</li>
             <li>Przygotować smoke testy w <code>tests</code></li>
-            <li>Uruchomić testy z flagą <code>--noop</code></li>
-            <li>Uruchomić kod klas</li>
+            <li>Uruchomić kod przy pomocy Vagrant</li>
           </ul>
         </section>
-      </section>
-
-      <section>
-        <section>
-          <h1>Kompilacja, katalog i raportowanie</h1>
-        </section>
-        <section>
-          <h2>Kompilacja</h2>
-          <ul>
-            <li>Puppet kompiluje kod wczytując klasy przypisane do węzła</li>
-            <li class="fragment">Sprawdzana jest kolejność i unikalność zasobów</li>
-            <li class="fragment">Powstaje katalog, plik json z konkretnymi zadaniami do wykonania w określonej kolejności</li>
-          </ul>
-        </section>
-        <section>
-          <h2>Katalog</h2>
-          <ul>
-            <li>Katalog to wynik kompilacji</li>
-            <li class="fragment">Zawiera tylko te zasoby które mają się wywołać na danym węźle</li>
-            <li class="fragment">Zawiera konkretne wartości w tym treści plików i potrzebne hasła</li>
-          </ul>
-        </section>
-        <section>
-          <h2>Raport</h2>
-          <ul>
-            <li>W trakcie uruchomienia generowany jest raport</li>
-            <li class="fragment">Raport może zostać zapisany lub wysłany do procesowa raportów</li>
-            <li class="fragment">Procesory raportów to Enterprise console i Herald</li>
-          </ul>
-        </section>
-        <section>
-          <h2>PE Console</h2>
-          <p><img src="img/pe-3-console.png" /></p>
-        </section>
-        <section>
-          <h2>Herald</h2>
-          <p><img style="height: 550px" src="//raw.githubusercontent.com/wavesoftware/gem-puppet-herald/gh-pages/images/reports.png" /></p>
-        </section>
-        <section>
-          <h1>Raporty</h1>
-          <h2 class="blue">demo</h2>
-        </section>
-      </section>
-
-      <section data-background-color="#A61C00">
-        <h1>Zadanie 13</h1>
-        <ul>
-          <li>Wykorzystując poznane umiejętności napisz moduł puppeta instalujący i konfigurujący blog WordPress</li>
-          <li>Instalacja interpretera PHP, serwera bazy danych, serwera www, konfiguracja użytkowników systemowych</li>
-          <li>Nie zapomnij o testach dymnych</li>
-          <li>Postaraj się zachować idempotencję</li>
-          <li>Uruchom kod i przetestuj</li>
-        </ul>
       </section>
 
       <section>
