@@ -1,14 +1,12 @@
 # Wprowadzenie do technologii Puppet
 
-Slajdy: http://cardil.github.io/puppet-tut
+Slajdy: http://ingwarsw.github.io/jenkins-by-devops
 
-1. Czym jest DevOps i gdzie w tym Puppet?
-1. Sposoby pracy z Puppet
-1. Instalacja Puppet na systemie operacyjnym
-1. Architektura Master - Agent wykorzystywana przez Puppet
-1. Podstawowe typy takie jak file, service, user oraz package
-1. Składnia deklaratywnych manifestów Puppet
-1. Zasoby wraz z zarządzaniem kolejnością wykonywania
-1. Klasy i definicje
-1. Wstęp do testowania i tryb bez operacyjny
-1. Kompilacja, katalogi oraz raportowanie
+1. Co to jest Jenkins i gdzie w tym Puppet?
+1. Puppet przypomnienie podstaw
+  - Składnia deklaratywnych manifestów
+  - Zasoby i zarządzanie kolejnością
+  - Klasy i definicje
+1. Moduły Puppet
+1. Puppet Forge
+1. Tworzenie modulu Jenkins DSL
