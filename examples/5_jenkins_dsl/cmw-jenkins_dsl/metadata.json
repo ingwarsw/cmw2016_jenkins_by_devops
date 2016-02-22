@@ -1,0 +1,15 @@
+{
+  "name": "cmw/jenkins_dsl",
+  "version": "0.1.0",
+  "author": "Ingwar",
+  "summary": "Jenkins DSL module",
+  "license": "Apache 2.0",
+  "source": "",
+  "project_page": null,
+  "issues_url": null,
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"},
+    {"name":"rtyler-jenkins","version_requirement":">= 1.6.0"}
+  ]
+}
+
