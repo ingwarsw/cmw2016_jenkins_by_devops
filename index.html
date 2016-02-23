@@ -517,6 +517,27 @@ mod 'puppetlabs/firewall', '1.8.0'</code></pre></li>
                       <li class="fragment">I wiele wiele innych.. pełna dokumentacja na forge <a href="https://forge.puppetlabs.com/rtyler/jenkins">rtyler/jenkins</a></li>
                   </ul>
               </section>
+              <section>
+                  <p>Najprostszy XML z konfiguracją zadania</p>
+                  <small>
+                  <pre style="width: 900px"><code style="max-height: 800px"><?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders/>
+  <publishers/>
+  <buildWrappers/>
+</project></code></pre></small>
+              </section>
               <section data-background-color="#A61C00">
                   <h1>Zadanie 5</h1>
                   <ul>
@@ -594,14 +615,44 @@ branches.each {
     }
 }</code></pre>
               </section>
+              <section>
+                  <p>Przykład XML z konfiguracją zadania z DSL</p>
+                  <small>
+                  <pre style="width: 900px"><code style="max-height: 800px"><?xml version='1.0' encoding='UTF-8'?>
+<project>
+    <actions/>
+    <description></description>
+    <keepDependencies>false</keepDependencies>
+    <properties/>
+    <scm class='hudson.scm.NullSCM'/>
+    <canRoam>true</canRoam>
+    <disabled>false</disabled>
+    <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+    <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+    <triggers/>
+    <concurrentBuild>false</concurrentBuild>
+    <builders>
+        <javaposse.jobdsl.plugin.ExecuteDslScripts plugin='job-dsl@1.43'>
+            <scriptText>&lt;%= @jobDslGroovy %&gt;</scriptText>
+            <usingScriptText>true</usingScriptText>
+            <ignoreExisting>false</ignoreExisting>
+            <removedJobAction>IGNORE</removedJobAction>
+            <removedViewAction>IGNORE</removedViewAction>
+            <lookupStrategy>JENKINS_ROOT</lookupStrategy>
+            <additionalClasspath></additionalClasspath>
+        </javaposse.jobdsl.plugin.ExecuteDslScripts>
+    </builders>
+    <publishers/>
+    <buildWrappers/>
+</project></code></pre></small>
+              </section>
               <section data-background-color="#A61C00">
                   <h1>Zadanie 6</h1>
                   <ul>
                       <li>Rozbuduj moduł z zadania 5 o następujące elementy<ul>
                           <li>zainstalowanie pluginów job-dsl i git<small class="blue">(uwaga, zależności nie instalują sie automatycznie)</small></li>
-                          <li>dodanie nowgo zadania poprzez <code>jenkins::job</code></li>
+                          <li>dodanie nowgo zadania poprzez <code>jenkins::job</code> z dowolną konfiguracja DSL</li>
                       </ul></li>
-                      <li><a href="examples/5_jenkins_dsl/cmw-jenkins_dsl/templates/job_template.xml.erb">Szablon XML</a> potrzebny do skonfigurowania zadania</li>
                       <li>Uruchomić ten skrypt przy pomocy Vagrant</li>
                       <li>Sprawdz czy zadanie jest widoczne poprzez konsole Jenkins</li>
                   </ul>
