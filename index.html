@@ -93,7 +93,7 @@
             <ul>
                 <li class="fragment">Krótki wstęp teoretyczny</li>
                 <li class="fragment">Samodzielna praca</li>
-                <li class="fragment">Przerwa koło 13</li>
+                <li class="fragment">Przerwa około 13</li>
                 <li class="fragment">Mikro projekt</li>
             </ul>
 
@@ -112,7 +112,7 @@
             </li>
             <li class="fragment">Moduły Puppet</li>
               <li class="fragment">Puppet Forge</li>
-            <li class="fragment">Tworzenie modulu Jenkins</li>
+            <li class="fragment">Tworzenie modułu Jenkins</li>
           </ol>
         </section>
 
@@ -148,9 +148,9 @@
         <section>
             <h2>Jenkins</h2>
             <ul>
-                <li>Jedno z najpopularniejszych, darmowych narzedzi <span class="blue">continuous integration</span></li>
-                <li class="fragment">Przy jego pomocy mozna zbudowac łatwo process <span class="blue">continuous deployment</span></li>
-                <li class="fragment">Łatwa instalacja: pakiety do wiekszosci dystrybucji lub <span class="blue">java -jar jenkins.war</span></li>
+                <li>Jedno z najpopularniejszych, darmowych narzędzi <span class="blue">continuous integration</span></li>
+                <li class="fragment">Przy jego pomocy można zbudować łatwo proces <span class="blue">continuous deployment</span></li>
+                <li class="fragment">Łatwa instalacja: pakiety do większości dystrybucji lub <span class="blue">java -jar jenkins.war</span></li>
                 <li class="fragment">Łatwa konfiguracja poprzez web GUI</li>
                 <li class="fragment">Bardzo duża ilość <a href="https://wiki.jenkins-ci.org/display/JENKINS/Plugins">pluginów</a></li>
             </ul>
@@ -159,8 +159,8 @@
               <h2>Jenkins + Puppet</h2>
               <h4>Dlaczego tak?</h4>
               <ul>
-                  <li class="fragment">Dostajemy konfiguracje zapisaną w <span class="blue">kodzie</span></li>
-                  <li class="fragment">Przy dużej iloci zadań zarzadzanie nimi poprzez GUI jest bardzo czasochłonne</li>
+                  <li class="fragment">Dostajemy konfigurację zapisaną w <span class="blue">kodzie</span></li>
+                  <li class="fragment">Przy dużej ilości zadań zarządzanie nimi poprzez GUI jest bardzo czasochłonne</li>
                   <li class="fragment">Znika problem <span class="blue">state of art</span>, łatwo można odtworzyć środowisko</li>
                   <li class="fragment">Pozbywamy się również problemu <span class="blue">pływającej konfiguracji</span></li>
               </ul>
@@ -422,7 +422,7 @@ JENKINS_USER=<% @user %></code></pre>
           <h1>Zadanie 3</h1>
           <ul>
             <li>Wykorzystując kod z zadania 2 utworzyć moduły puppet <code>inazwisko/myjenkins</code> oraz <code>inazwisko/common</code> i przenieść kod do klas i definicji</li>
-            <li>Przygotować smoke testy w <code>tests</code></li>
+            <li>Stworzyć zasób file na podstawie jakiegoś template</li>
             <li>Uruchomić kod przy pomocy Vagrant</li>
           </ul>
         </section>
@@ -496,10 +496,10 @@ mod 'puppetlabs/firewall', '1.8.0'</code></pre></li>
               <section>
                   <ul>
                       <li>Niestety nie ma modułu od Puppetlabs</li>
-                      <li class="fragment">Sprawdzamy ten który ma approve od puppetlabs</li>
-                      <li class="fragment">Ma bardzo duzo pobrań, więc można załozyc ze będzie dość elastyczny w konfiguracji</li>
-                      <li class="fragment">Ma dobra dokumentacje</li>
-                      <li class="fragment">Wydaje się ze daje możliwosc zrobienia wszystkiego co potrzebujemy</li>
+                      <li class="fragment">Sprawdzamy ten który ma approve od Puppetlabs</li>
+                      <li class="fragment">Ma bardzo dużo pobrań, więc można założyć że będzie dość elastyczny w konfiguracji</li>
+                      <li class="fragment">Ma dobrą dokumentację</li>
+                      <li class="fragment">Wydaje się że daje możliwość zrobienia wszystkiego czego potrzebujemy</li>
                   </ul>
               </section>
               <section>
@@ -515,7 +515,7 @@ mod 'puppetlabs/firewall', '1.8.0'</code></pre></li>
     config => template("${templates}/test-build-job.xml.erb"
 }</code></pre>
                       </li>
-                      <li class="fragment">I wiele wiele innych.. pełna dokumentacja na forge <a href="https://forge.puppetlabs.com/rtyler/jenkins">rtyler/jenkins</a></li>
+                      <li class="fragment">I wiele wiele innych... pełna dokumentacja na forge <a href="https://forge.puppetlabs.com/rtyler/jenkins">rtyler/jenkins</a></li>
                   </ul>
               </section>
               <section>
@@ -548,7 +548,7 @@ mod 'puppetlabs/firewall', '1.8.0'</code></pre></li>
                           <li>zainstalowanie jednego dowolnego pluginu <small class="blue">(uwaga, zależności nie instalują sie automatycznie)</small></li>
                       </ul></li>
                       <li>Uruchomić ten skrypt przy pomocy Vagrant</li>
-                      <li>Sprawdz czy mozesz się zalogować na server jenkins <code>http://localhost:8080/</code></li>
+                      <li>Sprawdź czy możesz się zalogować na server jenkins <code>http://localhost:8080/</code></li>
                   </ul>
               </section>
           </section>
@@ -559,9 +559,9 @@ mod 'puppetlabs/firewall', '1.8.0'</code></pre></li>
                   <ul>
                       <li>Programistyczny zapis zadań Jenkinsa</li>
                       <li class="fragment">Pozwala budować nowe zadania z poziomu kodu</li>
-                      <li class="fragment">Łatwo mozna budować strumieniowe zadania</li>
+                      <li class="fragment">Łatwo można budować strumieniowe zadania</li>
                       <li class="fragment">Pozwala zapisać wszystko to na co pozwala sam Jenkins</li>
-                      <li class="fragment">W sposób duzo prostszy niż XML który rozumie Jenkins</li>
+                      <li class="fragment">W sposób dużo prostszy niż XML który rozumie Jenkins</li>
                   </ul>
               </section>
               <section>
@@ -580,7 +580,7 @@ mod 'puppetlabs/firewall', '1.8.0'</code></pre></li>
               </section>
 
           <section>
-              <h5>Cały jezyk do dyspzycji</h5>
+              <h5>Cały jezyk do dyspozycji</h5>
               <ul>
                   <li class="fragment">Zmienne
                       <pre><code class="groovy">def jobName = 'example'
@@ -602,7 +602,7 @@ job(jobName) {
               </ul>
           </section>
               <section>
-                <h5>Wywolania zewnętrzne</h5>
+                <h5>Wywołania zewnętrzne</h5>
                       <pre><code class="groovy">def project = 'Netflix/asgard'
 def branchApi = new URL("https://api.github.com/repos/${project}/branches")
 def branches = new groovy.json.JsonSlurper().parse(branchApi.newReader())
@@ -676,10 +676,10 @@ branches.each {
                   <ul>
                       <li>Rozbuduj moduł z zadania 5 o następujące elementy<ul>
                           <li>zainstalowanie pluginów job-dsl i git<small class="blue">(uwaga, zależności nie instalują sie automatycznie)</small></li>
-                          <li>dodanie nowgo zadania poprzez <code>jenkins::job</code> z dowolną konfiguracja DSL</li>
+                          <li>dodanie nowego zadania poprzez <code>jenkins::job</code> z dowolną konfiguracją DSL</li>
                       </ul></li>
                       <li>Uruchomić ten skrypt przy pomocy Vagrant</li>
-                      <li>Sprawdz czy zadanie jest widoczne poprzez konsole Jenkins</li>
+                      <li>Sprawdź czy zadanie jest widoczne poprzez konsole Jenkins</li>
                   </ul>
               </section>
           </section>
@@ -688,7 +688,7 @@ branches.each {
               <h1>Podsumowanie</h1>
               <h2>warsztatu</h2>
               <ul>
-                  <li>Co poznaliśmy? Powtorka.</li>
+                  <li>Co poznaliśmy? Powtórka.</li>
                   <li>Co dalej?
                       <ul>
                           <li>doszlifowanie modułu Jenkins DSL</li>
