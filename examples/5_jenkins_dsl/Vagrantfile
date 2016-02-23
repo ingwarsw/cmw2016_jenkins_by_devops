@@ -4,7 +4,7 @@
 Vagrant.configure(2) do |config|
   config.vm.box = "puppetlabs/ubuntu-14.04-64-nocm"
 
-  config.vm.hostname = "vagrant-jenkins.local"
+  config.vm.hostname = "vagrant-jenkins.localdomain"
 
   config.vm.provider "virtualbox" do |vb|
      vb.memory = "1024"

@@ -465,7 +465,7 @@ puppet module install puppetlabs/apt # instaluje moduł</code></pre>
 mod 'puppetlabs/apt'
 mod 'puppetlabs/firewall', '1.8.0'</code></pre></li>
             <li class="fragment">Instalacja z Rubygems: <code>gem install librarian-puppet</code></li>
-            <li class="fragment">Uruchomienie: <code>librarian-puppet update --verbose</code> w katalogu pliku <code>Puppetfile</code></li>
+            <li class="fragment">Uruchomienie: <code>librarian-puppet update --verbose</code>Za w katalogu pliku <code>Puppetfile</code></li>
           </ul>
 
         </section>
@@ -484,6 +484,44 @@ mod 'puppetlabs/firewall', '1.8.0'</code></pre></li>
 
 
       </section>
+
+          <section>
+              <section>
+                  <h1 class="blue">Moduł Jenkins</h1>
+              </section>
+              <section>
+                  <img src="img/forge_jenkins.png" alt="" />
+              </section>
+              <section>
+                  <ul>
+                      <li>Wybierjąc najpierw sprawdzamy ten który ma approve od puppetlabs i bardzo duzo pobrań</li>
+                      <li class="fragment">Mozna nim zainstalowac samego jenkinsa
+                          <pre><code>include jenkins</code></pre>
+                      </li>
+                      <li class="fragment">Zarządzać pluginami
+                          <pre><code>jenkins::plugin { 'git': }</code></pre>
+                      </li>
+                      <li class="fragment">Zarządzać zadaniami
+                          <pre><code>jenkins::job { 'test-build-job':
+    config => template("${templates}/test-build-job.xml.erb"
+}</code></pre>
+                      </li>
+                      <li class="fragment">I wiele innych.. pełna dokumentacja na forge <a href="https://forge.puppetlabs.com/rtyler/jenkins">rtyler/jenkins</a></li>
+                  </ul>
+              </section>
+              <section data-background-color="#A61C00">
+                  <h1>Zadanie 5</h1>
+                  <ul>
+                      <li>Rozbuduj moduł z zadania 3 o następujące elementy<ul>
+                          <li>zależność do modułu <code>rtyler/jenkins</code></li>
+                          <li>uruchomienie modułu jenkins <code>include jenkins</code></li>
+                          <li>zainstalowanie jednego dowolnego pluginu</li>
+                      </ul></li>
+                      <li>Uruchomić ten skrypt przy pomocy Vagrant</li>
+                      <li>Sprawdz czy mozesz się zalogować na server jenkins <code>http://localhost:8080/</code></li>
+                  </ul>
+              </section>
+          </section>
 
       <section>
         <h1 class="blue">Dziękuję</h1>
