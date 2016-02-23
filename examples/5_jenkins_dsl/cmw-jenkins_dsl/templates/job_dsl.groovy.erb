@@ -1,4 +1,4 @@
-def project = '<%= @projectName %>'
+def project = '<%= @githubProjectName %>'
 def branchApi = new URL("https://api.github.com/repos/${project}/branches")
 def branches = new groovy.json.JsonSlurper().parse(branchApi.newReader())
 branches.each {
@@ -9,7 +9,7 @@ branches.each {
             git("git://github.com/${project}.git", branchName)
         }
         steps {
-            maven("test -Dproject.name=${project}/${branchName}")
+            shell("echo Project: ${project}/${branchName} build")
         }
     }
 }

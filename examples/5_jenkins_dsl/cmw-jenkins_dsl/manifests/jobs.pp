@@ -1,10 +1,17 @@
 class jenkins_dsl::jobs {
 
-  $projectName = "quidryan/aws-sdk-test"
+  define dsl (
+    $repositoryName
+  ) {
 
-  $jobDslGroovy = template('jenkins_dsl/job_dsl.groovy.erb')
+    validate_string($repositoryName)
 
-  jenkins::job { 'dsl-build' :
-    config => template('jenkins_dsl/job_template.xml.erb')
+    $githubProjectName = $repositoryName
+
+    $jobDslGroovy = template('jenkins_dsl/job_dsl.groovy.erb')
+
+    jenkins::job { $name :
+      config => template('jenkins_dsl/job_template.xml.erb')
+    }
   }
 }
