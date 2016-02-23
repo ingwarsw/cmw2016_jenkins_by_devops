@@ -494,19 +494,27 @@ mod 'puppetlabs/firewall', '1.8.0'</code></pre></li>
               </section>
               <section>
                   <ul>
-                      <li>Wybierjąc najpierw sprawdzamy ten który ma approve od puppetlabs i bardzo duzo pobrań</li>
-                      <li class="fragment">Mozna nim zainstalowac samego jenkinsa
-                          <pre><code>include jenkins</code></pre>
-                      </li>
-                      <li class="fragment">Zarządzać pluginami
-                          <pre><code>jenkins::plugin { 'git': }</code></pre>
-                      </li>
+                      <li>Niestety nie ma modułu od Puppetlabs</li>
+                      <li class="fragment">Sprawdzamy ten który ma approve od puppetlabs</li>
+                      <li class="fragment">Ma bardzo duzo pobrań, więc można załozyc ze będzie dość elastyczny w konfiguracji</li>
+                      <li class="fragment">Ma dobra dokumentacje</li>
+                      <li class="fragment">Wydaje się ze daje możliwosc zrobienia wszystkiego co potrzebujemy</li>
+                  </ul>
+              </section>
+              <section>
+                  <li class="fragment">Mozna nim zainstalowac samego jenkinsa
+                      <pre><code class="puppet">include jenkins</code></pre>
+                  </li>
+                  <li class="fragment">Zarządzać pluginami
+                      <pre><code class="puppet">jenkins::plugin { 'git': }</code></pre>
+                  </li>
+                  <ul>
                       <li class="fragment">Zarządzać zadaniami
-                          <pre><code>jenkins::job { 'test-build-job':
+                          <pre><code class="puppet">jenkins::job { 'test-build-job':
     config => template("${templates}/test-build-job.xml.erb"
 }</code></pre>
                       </li>
-                      <li class="fragment">I wiele innych.. pełna dokumentacja na forge <a href="https://forge.puppetlabs.com/rtyler/jenkins">rtyler/jenkins</a></li>
+                      <li class="fragment">I wiele wiele innych.. pełna dokumentacja na forge <a href="https://forge.puppetlabs.com/rtyler/jenkins">rtyler/jenkins</a></li>
                   </ul>
               </section>
               <section data-background-color="#A61C00">
@@ -515,13 +523,91 @@ mod 'puppetlabs/firewall', '1.8.0'</code></pre></li>
                       <li>Rozbuduj moduł z zadania 3 o następujące elementy<ul>
                           <li>zależność do modułu <code>rtyler/jenkins</code></li>
                           <li>uruchomienie modułu jenkins <code>include jenkins</code></li>
-                          <li>zainstalowanie jednego dowolnego pluginu</li>
+                          <li>zainstalowanie jednego dowolnego pluginu <small class="blue">(uwaga, zależności nie instalują sie automatycznie)</small></li>
                       </ul></li>
                       <li>Uruchomić ten skrypt przy pomocy Vagrant</li>
                       <li>Sprawdz czy mozesz się zalogować na server jenkins <code>http://localhost:8080/</code></li>
                   </ul>
               </section>
           </section>
+
+          <section>
+              <section>
+                  <h1 class="blue">Jenkins DSL</h1>
+                  <ul>
+                      <li>Programistyczny zapis zadań Jenkinsa</li>
+                      <li class="fragment">Pozwala budować nowe zadania z poziomu kodu</li>
+                      <li class="fragment">Łatwo mozna budować strumieniowe zadania</li>
+                      <li class="fragment">Pozwala zapisać wszystko to na co pozwala sam Jenkins</li>
+                      <li class="fragment">W sposób duzo prostszy niż XML który rozumie Jenkins</li>
+                  </ul>
+              </section>
+              <section>
+                  <h5>Składnia DSL (groovy)</h5>
+                  <pre><code class="groovy">job('DSL-Tutorial-1-Test') {
+  scm {
+    git('git://github.com/jgritman/aws-sdk-test.git')
+  }
+  triggers {
+    scm('*/15 * * * *')
+  }
+  steps {
+    maven('-e clean test')
+  }
+}</code></pre>
+              </section>
+
+          <section>
+              <h5>Cały jezyk do dyspzycji</h5>
+              <ul>
+                  <li class="fragment">Zmienne
+                      <pre><code class="groovy">def jobName = 'example'
+job(jobName) {
+}</code></pre>
+                  </li>
+                  <li class="fragment">Pętle
+                     <pre><code class="groovy">for(i in 0..10) {
+    job("DSL-Tutorial-1-Test-${i}") {
+        scm {
+            git('https://github.com/quidryan/aws-sdk-test.git')
+        }
+        steps {
+            maven("test -Dtest.suite=${i}")
+        }
+    }
+}</code></pre>
+                  </li>
+              </ul>
+          </section>
+              <section>
+                <h5>Wywolania zewnętrzne</h5>
+                      <pre><code class="groovy">def project = 'Netflix/asgard'
+def branchApi = new URL("https://api.github.com/repos/${project}/branches")
+def branches = new groovy.json.JsonSlurper().parse(branchApi.newReader())
+branches.each {
+    def branchName = it.name
+    def jobName = "${project}-${branchName}".replaceAll('/','-')
+    job(jobName) {
+        scm {
+            git("https://github.com/${project}.git", branchName)
+        }
+    }
+}</code></pre>
+              </section>
+              <section data-background-color="#A61C00">
+                  <h1>Zadanie 6</h1>
+                  <ul>
+                      <li>Rozbuduj moduł z zadania 5 o następujące elementy<ul>
+                          <li>zainstalowanie pluginów job-dsl i git<small class="blue">(uwaga, zależności nie instalują sie automatycznie)</small></li>
+                          <li>dodanie nowgo zadania poprzez <code>jenkins::job</code></li>
+                      </ul></li>
+                      <li><a href="examples/5_jenkins_dsl/cmw-jenkins_dsl/templates/job_template.xml.erb">Szablon XML</a> potrzebny do skonfigurowania zadania</li>
+                      <li>Uruchomić ten skrypt przy pomocy Vagrant</li>
+                      <li>Sprawdz czy zadanie jest widoczne poprzez konsole Jenkins</li>
+                  </ul>
+              </section>
+          </section>
+
 
       <section>
         <h1 class="blue">Dziękuję</h1>
