@@ -1,6 +1,6 @@
 # Wprowadzenie do technologii Puppet
 
-Slajdy: http://ingwarsw.github.io/cmw2160_jenkins_by_devops
+Slajdy: http://ingwarsw.github.io/cmw2016_jenkins_by_devops
 
 1. Co to jest Jenkins i gdzie w tym Puppet?
 1. Puppet przypomnienie podstaw
