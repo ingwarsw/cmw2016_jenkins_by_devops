@@ -502,13 +502,13 @@ mod 'puppetlabs/firewall', '1.8.0'</code></pre></li>
                   </ul>
               </section>
               <section>
-                  <li class="fragment">Mozna nim zainstalowac samego jenkinsa
+                  <ul>
+                  <li>Przy jego pomocy można prosto zainstalować i uruchomić Jenkinsa
                       <pre><code class="puppet">include jenkins</code></pre>
                   </li>
                   <li class="fragment">Zarządzać pluginami
                       <pre><code class="puppet">jenkins::plugin { 'git': }</code></pre>
                   </li>
-                  <ul>
                       <li class="fragment">Zarządzać zadaniami
                           <pre><code class="puppet">jenkins::job { 'test-build-job':
     config => template("${templates}/test-build-job.xml.erb"
@@ -613,6 +613,30 @@ branches.each {
             git("https://github.com/${project}.git", branchName)
         }
     }
+}</code></pre>
+              </section>
+              <section>
+                  <p>Pamiętacie XML z konfiguracją zadania dla Jenkinsa</p>
+                  <small>
+                  <pre style="width: 900px"><code style="max-height: 800px"><?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders/>
+  <publishers/>
+  <buildWrappers/>
+</project></code></pre></small>
+                  <h5 class="fragment">==</h5>
+                  <pre class="fragment" style="width: 900px"><code class="groovy">job('example) {
 }</code></pre>
               </section>
               <section>
